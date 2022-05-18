@@ -48,6 +48,7 @@ function getMostPopularAuthors(books, authors) {
     const fullName = `${findAuthor.name.first} ${findAuthor.name.last}`;
     const bookCount = borrows.length;
     const authorCheck = acc.find(authName => authName.name === fullName);
+
     if(!authorCheck) {
       const newAuthor = {name: fullName, count: bookCount};
       acc.push(newAuthor);
@@ -56,6 +57,7 @@ function getMostPopularAuthors(books, authors) {
     }
     return acc
   }, []);
+  
   const sortedAuthors = _bigSmallSort(authorsList);
   return _sliceFive(sortedAuthors);
 }
