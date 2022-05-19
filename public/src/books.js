@@ -1,5 +1,7 @@
 const { getBooksPossessedByAccount } = require("./accounts");
 const { getBooksBorrowedCount } = require("./home");
+
+//helper function used to slice arrays into 10 or fewer items
 function _sliceTen(finalResult) {
   const slicedResult = finalResult.slice(0,10);
   return slicedResult
@@ -23,7 +25,9 @@ function partitionBooksByBorrowedStatus(books) {
 }
 
 function getBorrowersForBook(book, accounts) {
+//set variables and destructure book into {borrows}
   const {borrows} = book; 
+//map all borrows to id and returned status, finds matching id
   const borrowerList = borrows.map(({id, returned}) => { 
     const acc = accounts.find(account => account.id === id); 
     return{ 
